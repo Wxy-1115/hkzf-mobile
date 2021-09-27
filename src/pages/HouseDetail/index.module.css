@@ -1,0 +1,128 @@
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1;
+  color: #fff;
+}
+
+.nav :global(.am-navbar-title){
+  color: #fff;
+}
+:global(.icon-share){
+  font-size: 20px;
+}
+
+.slides {
+  height: 252px;
+}
+
+.slides :global(a) {
+  display: inline-block;
+  width: 100%;
+  height: 252px;
+}
+
+.slides :global(img) {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+
+/* 房屋基础信息 */
+
+.info {
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 10px solid #f2f5f8;
+}
+
+.infoTitile {
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+}
+.tags {
+  position: relative;
+  margin: 10px 0;
+}
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 4px 5px;
+  margin-right: 5px;
+  line-height: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.tag1 {
+  color: #1589cc;
+  background: #e1f5f8;
+}
+.tag2 {
+  color: #3fc28c;
+  background: #e1f5ed;
+}
+.tag3 {
+  color: #5aabfd;
+  background: #e6f2ff;
+}
+.infoPrice {
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  padding: 15px 0;
+  text-align: center;
+}
+.infoPriceItem {
+  color: #888;
+}
+.value {
+  color: #f55a30;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.month{
+  font-size: 12px;
+  font-weight: 400;
+  color: #ee714f;
+}
+
+.infoBasic{
+  padding-top: 15px;
+  color: #333;
+}
+.title {
+  display: inline-block;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* 地图位置 */
+.map{
+  padding: 15px;
+  color: #888;
+
+}
+.mapTitle{
+  color: #333;
+
+}
+
+/* 房屋配套 */
+.about{
+  padding: 15px;
+  background-color: #fff;
+}
+.houseTitle{
+  font-size: 14px;
+  font-weight: 700;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #cecece;
+}

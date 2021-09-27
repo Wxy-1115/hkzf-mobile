@@ -1,0 +1,25 @@
+.content{
+  position: relative;
+  background-color: #fff;
+  height: 40px;
+  text-align: center;
+  color: #333;
+  z-index: 2;
+}
+.title{
+  width: 25%;
+  height: 100%;
+  line-height: 40px;
+  font-size: 16px;
+}
+.title :global(.icon-arrow) {
+  margin-left: 3px;
+  font-size: 12px;
+  color: #ccc;
+}
+.active{
+  color:#00ae66;
+}
+.active :global(.icon-arrow) {
+  color:#00ae66;
+}
