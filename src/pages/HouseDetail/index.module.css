@@ -1,3 +1,7 @@
+.root {
+  padding-bottom: 50px;
+}
+
 .nav {
   position: absolute;
   top: 0;
@@ -106,23 +110,122 @@
 
 /* 地图位置 */
 .map{
-  padding: 15px;
+  padding-top: 15px;
   color: #888;
-
 }
 .mapTitle{
+  margin: 0 0 15px 15px;
   color: #333;
-
 }
-
+.mapContainer {
+  width: 100%;
+  height: 120px;
+}
+.arrow{
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  display: block;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-top-color: #ee714f;
+  transform: rotate(140deg);
+  -webkit-transform: rotate(140deg);
+  -moz-transform: rotate(140deg);
+  -ms-transform: rotate(140deg);
+  -o-transform: rotate(140deg);
+}
 /* 房屋配套 */
 .about{
   padding: 15px;
   background-color: #fff;
+  border-bottom: 10px solid #f2f5f8;
 }
 .houseTitle{
   font-size: 14px;
   font-weight: 700;
   padding-bottom: 15px;
   border-bottom: 1px solid #cecece;
+}
+.titleEmpty{
+  padding: 15px 0 0 15px;
+}
+
+/* 房源概况 */
+
+.set {
+  padding: 15px;
+  vertical-align: middle;
+  border-bottom: 10px solid #f2f5f8;
+}
+
+.contact {
+  position: relative;
+  padding: 15px 0;
+}
+.useImg {
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+
+.useInfo {
+  margin-left: 60px;
+  padding-top: 5px;
+  width: 100px;
+  height: 50px;
+}
+.userAuth {
+  color: #ee714f;
+}
+
+.userMsg {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  padding: 3px 8px;
+  border: 1px solid #3fc28c;
+  border-radius: 5px;
+  color: #3fc28c;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.love {
+  padding: 15px;
+}
+/* 底部 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #f8f6f6;
+  display: flex;
+  z-index: 10;
+  font-size: 16px;
+  color: #838383;
+}
+.collect {
+  flex: 1;
+  text-align: center;
+}
+:global(.icon-Collection) {
+  margin-right: 3px;
+  color: #fff;
+}
+.consult {
+  flex: 1;
+  text-align: center;
+}
+.sub {
+  flex: 1;
+  text-align: center;
+  background-color: #3fc28c;
+  color: #fff;
 }
