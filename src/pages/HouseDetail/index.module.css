@@ -229,3 +229,10 @@
   background-color: #3fc28c;
   color: #fff;
 }
+
+.favoriteImg {
+  vertical-align: middle;
+  margin: -5px 5px 0 0;
+  width: 18px;
+  height: 18px;
+}

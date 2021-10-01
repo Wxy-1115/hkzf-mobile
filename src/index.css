@@ -24,3 +24,12 @@ ul{
 .body-fixed {
   overflow: hidden;
 }
+a:link {
+  color: #333;
+}
+a:visited {
+  color: #333;
+}
+a:active {
+  color: #333;
+}

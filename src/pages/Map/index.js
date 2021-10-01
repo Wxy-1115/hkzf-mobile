@@ -201,7 +201,14 @@ class Map extends React.Component {
         </div>
         <div className={style.list}>
           {this.state.housesList.map((item) => (
-          <Flex className={style.content} align='start' key={item.houseCode}>
+            <Flex 
+              className={style.content} 
+              align='start' 
+              key={item.houseCode} 
+              onClick={() => {
+                this.props.history.push(`/detail/${item.houseCode}`)
+              }}
+            >
               <img src={BASE_URL+item.houseImg} alt="" className={style.image} />
             <Flex className={style.houseInfo} direction='column' align='start'>
               <h3 className={style.houseTitle}>{item.title}</h3>

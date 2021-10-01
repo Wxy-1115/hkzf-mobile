@@ -31,7 +31,7 @@ const navs = [
     id: 3,
     img: Nav3,
     title: '地图找房',
-    path: '/home/map'
+    path: '/map'
   },
   {
     id: 4,

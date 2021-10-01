@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Carousel, Flex, Toast } from "antd-mobile";
+import { Carousel, Flex, Modal, Toast } from "antd-mobile";
 
 import NavHeader from "../../components/NavHeader";
 import HouseItem from "../../components/HouseItem";
@@ -10,6 +10,9 @@ import { BASE_URL } from '../../utils/url';
 import styles from './index.module.css'
 import HousePackage from '../../components/HousePackage';
 import { API } from '../../utils/api';
+import { isAuth } from '../../utils';
+
+const alert = Modal.alert
 
 const BMap = window.BMapGL
 const labelStyle = {
@@ -51,15 +54,35 @@ const list = [
   class HouseDetail extends Component {
     state = {
       isLoading: false,
-      // 房屋信息
-      houseInfo: {}
+      houseInfo: {},   // 房屋信息
+      isFavorite: false  // 房源是否收藏
     }
 
     componentDidMount() {
       console.log(this.props.match.params);
       this.getHouseDetail()
-
+      this.checkFavorite()
     }
+
+    async checkFavorite() {
+      const isLogin = isAuth()
+      if(!isLogin) {
+        // 没有登录
+        return 
+      } else {
+        const { id } = this.props.match.params
+        const res = await API.get(`/user/favorites/${id}`)
+        const { status, body} = res.data
+        console.log(res);
+        if(status === 200) {
+          // 请求成功
+          this.setState({
+            isFavorite: body.isFavorite
+          })
+        }
+      }
+    }
+    // 获取房屋详情数据
     async getHouseDetail() {
 
       // 开启loading
@@ -75,6 +98,45 @@ const list = [
       })
       const { community, coord } = this.state.houseInfo
       this.renderMap(community, coord)
+    }
+    // 收藏按钮点击事件
+    handleFavorite = async () => {
+      const isLogin = isAuth()
+      const {isFavorite} = this.state
+      const {history, location} = this.props
+      if (!isLogin) {
+        alert('提示', '登录后才能收藏房源，是否去登录？', [
+          { text: '取消' },
+          {
+            text: '去登录',
+            onPress: () => history.push('/login', { from: location})
+          }
+        ])
+      }
+      const { id } = this.props.match.params
+      if (isFavorite) {
+        
+        // 已收藏 取消收藏
+        const res = await API.delete(`/user/favorites/${id}`)
+        const { status } = res.data
+        this.setState({ isFavorite: false })
+        if (status === 200) {
+          Toast.info('已取消收藏', 1, null, false)
+        } else {
+          // token过期
+          Toast.info('登录超时，请重新登录！', 1, null, false)
+        }
+      } else {
+        const res = await API.post(`/user/favorites/${id}`)
+        const { status } = res.data
+        if (status === 200) {
+          Toast.info('已添加收藏', 1, null, false)
+          this.setState({ isFavorite: true })
+        } else {
+          // token过期
+          Toast.info('登录超时，请重新登录！', 1, null, false)
+        }
+      }
     }
     // 渲染轮播图结构
     renderSwipers() {
@@ -109,9 +171,10 @@ const list = [
       map.addOverlay(label)
     }
     render() {
-      const { isLoading, houseInfo: { community, title, tags, price, roomType, size, floor, oriented, supporting, description } } = this.state
       // 判断是否请求到房屋信息,没有就返回null
       if (Object.keys(this.state.houseInfo).length === 0) return null
+      const { isLoading, houseInfo: { community, title, tags, price, roomType, size, floor, oriented, supporting, description } , isFavorite} = this.state
+      
       return (
         <div className={styles.root}>
           {/* 顶部导航栏 */}
@@ -224,6 +287,7 @@ const list = [
           <div className={styles.love}>
             {
               list.map(item => <HouseItem 
+                key={item.houseCode}
                 houseImg={item.houseImg}
                 title={item.title}
                 desc={item.desc}
@@ -235,7 +299,10 @@ const list = [
           </div>
           {/* 底部导航栏 */}
           <div className={styles.footer}>
-            <div className={styles.collect}><i className="iconfont icon-Collection"></i>收藏</div>
+            <div className={styles.collect} onClick={this.handleFavorite}>
+              <img src={BASE_URL + (isFavorite ? '/img/star.png' : '/img/unstar.png')} className={styles.favoriteImg} alt="收藏" />
+               {isFavorite ? '已收藏' : '收藏'}
+            </div>
             <div className={styles.consult}>在线咨询</div>
             <div className={styles.sub}>电话预约</div>
           </div>

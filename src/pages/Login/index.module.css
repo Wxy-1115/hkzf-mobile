@@ -1,0 +1,66 @@
+.root {
+  background-color: #fff;
+}
+
+.navHeader {
+  background-color: #fff;
+  color: #333;
+}
+
+.formItem {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+.error {
+  color: tomato;
+  margin-bottom: 15px;
+}
+.formSubmit {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.submit {
+  width: 100%;
+  height: 40px;
+  background-color: #3fc28c;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.backHome {
+  margin-top: 20px;
+  text-align: center;
+  color: #ccc;
+}
+
+.link:visited {
+  color: #888;
+}
+
+.iframe {
+  display: none;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #ccc;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ccc;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #ccc;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #ccc;
+}
