@@ -81,17 +81,32 @@ class HousePackage extends Component {
 
   // 渲染列表项
   renderItems() {
-    
-    return HOUSE_PACKAGE.map(item => {
-      if(this.props.list.indexOf(item.name) === -1) return null
-      return(
-        <li key={item.id} className={styles.item}>
-          <i className={[styles.icon, item.icon, 'iconfont'].join(' ')}></i>
-          <p>{item.name}</p>
-        </li>)
+    const { list, selected} = this.props
+    if (selected) {
+      return HOUSE_PACKAGE.map(item => {
+        return (
+          <li 
+            key={item.id} 
+            className={[styles.item, this.state.selectedNames.indexOf(item.name) > -1 ? styles.active : ''].join(' ')}
+            onClick={() => { this.toggleSelect(item.name) }}
+          >
+            <i className={[styles.icon, item.icon, 'iconfont'].join(' ')}></i>
+            <p>{item.name}</p>
+          </li>)
+      })
+    } else {
+      return HOUSE_PACKAGE.map(item => {
+        if (list.indexOf(item.name) === -1) return null
+        return (
+          <li 
+            key={item.id} 
+            className={[styles.item, this.state.selectedNames.indexOf(item.name) > -1 ? styles.active : ''].join(' ')}
+          >
+            <i className={[styles.icon, item.icon, 'iconfont'].join(' ')}></i>
+            <p>{item.name}</p>
+          </li>)
+      })
     }
-      
-      )
   }
   render() {
     return <ul className={styles.root}>{this.renderItems()}</ul>

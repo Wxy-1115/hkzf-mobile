@@ -18,7 +18,7 @@ class Favorite extends Component {
 
   getFavorites = async () => {
     const res = await API.get(`/user/favorites/`)
-    console.log(res);
+    // console.log(res);
     this.setState({
       houstList: res.data.body
     })

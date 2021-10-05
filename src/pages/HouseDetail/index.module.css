@@ -35,6 +35,9 @@
   height: 100%;
   vertical-align: top;
 }
+.slides :global(.slider-list) {
+  height: 252px !important;
+}
 
 /* 房屋基础信息 */
 

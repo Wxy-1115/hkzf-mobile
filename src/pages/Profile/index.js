@@ -36,7 +36,7 @@ class Profile extends Component {
     // console.log(getToken());
     if (!this.state.isLogin) return
     const res = await API.get('/user')
-    console.log(res);
+    // console.log(res);
     if (res.data.status === 200) {
       const { avatar, nickname } = res.data.body
       this.setState({
@@ -57,9 +57,9 @@ class Profile extends Component {
     alert('提示', '是否确定退出？', [
       { text: '取消'},
       { text: '确定', onPress: async () => {
-        console.log('ok');
-        const res= await API.post('/user/logout', null)
-        console.log(res);
+        // console.log('ok');
+        await API.post('/user/logout', null)
+        // console.log(res);
         removeToken()
 
         this.setState({

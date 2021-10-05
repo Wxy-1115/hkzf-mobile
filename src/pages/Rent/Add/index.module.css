@@ -1,0 +1,60 @@
+.root {
+
+}
+
+.info :global(.am-list-header){
+  font-size: 16px;
+  color: #15ac60;
+}
+.info :global(.am-list-line .am-list-content){
+  color: #888;
+}
+.info :global(.am-list-item .am-input-label){
+  color: #888;
+}
+.title :global(.am-list-header){
+  font-size: 16px;
+  color: #333;
+}
+.img :global(.am-list-header){
+  font-size: 16px;
+  color: #333;
+}
+.supporting :global(.am-list-header){
+  font-size: 16px;
+  color: #333;
+}
+.supporting {
+  border-bottom: 15px solid #f2f5f8;
+}
+.desc :global(.am-list-header){
+  font-size: 16px;
+  color: #333;
+}
+.desc {
+  border-bottom: 80px solid #f2f5f8;
+}
+
+.bottom {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  text-align: center;
+  font-size: 18px;
+  z-index: 9;
+}
+.cancel {
+  height: 100%;
+  line-height: 50px;
+  background-color: #fff;
+  color: #15ac60;
+}
+.onOk {
+  margin-left: 0 !important;
+  height: 100%;
+  line-height: 50px;
+  background-color: #15ac60;
+  color: #fff;
+}

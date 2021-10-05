@@ -30,7 +30,7 @@ export const HouseItem = ({ houseImg, title, desc, tags, price, onclick, style }
 }
 
 HouseItem.propTypes = {
-  src: PropTypes.string,
+  houseImg: PropTypes.string,
   title: PropTypes.string,
   desc: PropTypes.string,
   tags: PropTypes.array.isRequired,
