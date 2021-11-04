@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Grid, Button, Modal } from 'antd-mobile';
 
-import { BASE_URL, isAuth, API, removeToken } from '../../utils';
+import { BASE_URL, isAuth, API, removeToken, setUserInfo } from '../../utils';
 
 import styles from './index.module.css';
 
@@ -39,12 +39,14 @@ class Profile extends Component {
     // console.log(res);
     if (res.data.status === 200) {
       const { avatar, nickname } = res.data.body
+      const userInfo = {
+        avatar,
+        nickname
+      }
       this.setState({
-        userInfo: {
-          avatar,
-          nickname
-        }
+        userInfo
       })
+      setUserInfo(userInfo)
     }else {
       // token失效
       this.setState({

@@ -1,0 +1,5 @@
+:global(.am-button) {
+  height: 120px;
+  font-size: 13px;
+  line-height: normal; 
+}

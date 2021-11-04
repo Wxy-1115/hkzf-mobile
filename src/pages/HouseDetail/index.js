@@ -71,9 +71,10 @@ const list = [
         return 
       } else {
         const { id } = this.props.match.params
+        // 查询房屋是否收藏
         const res = await API.get(`/user/favorites/${id}`)
         const { status, body} = res.data
-        console.log(res);
+        // console.log(res);
         if(status === 200) {
           // 请求成功
           this.setState({
