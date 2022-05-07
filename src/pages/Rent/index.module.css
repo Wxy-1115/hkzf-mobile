@@ -6,6 +6,21 @@
 .link {
   color: #048f55 !important;
 }
+.link2 {
+  display: block;
+  margin: 15px auto;
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #048f55;
+  border-radius: 10px;
+  color: #048f55 !important;
+  text-align: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
 .HouseItem {
   height: auto;
   line-height: normal;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 import HouseItem from '../../components/HouseItem';
@@ -33,7 +33,7 @@ class Rent extends Component {
     })
 
     const { status, body } = res.data
-    if(status === 200) {
+    if (status === 200) {
       this.setState({
         list: body
       })
@@ -91,9 +91,9 @@ class Rent extends Component {
     })
   }
   renderRentList() {
-    const {list} = this.state
+    const { list } = this.state
     const hasHouse = list.length > 0
-    if(!hasHouse) {
+    if (!hasHouse) {
       return (
         <NoHouse>
           您还没有房源，
@@ -105,12 +105,19 @@ class Rent extends Component {
       )
     }
 
-    return <div className={styles.houses}>{this.renderHouseItem()}</div>
+    return <div className={styles.houses}>
+      {
+        this.renderHouseItem()
+      }
+      <Link to='rent/add' className={styles.link2}>
+        继续发布
+      </Link>
+    </div>
   }
   render() {
-    const {history} = this.props
+    const { history } = this.props
     const { isLoading } = this.state
-    return ( 
+    return (
       <div className={styles.root}>
         <NavHeader onLeftClick={() => history.go(-1)}>房屋管理</NavHeader>
         {

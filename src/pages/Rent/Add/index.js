@@ -175,7 +175,7 @@ class RentAdd extends Component {
     // console.log(res);
     if(res.data.status === 200) {
       Toast.info('发布成功', 1, () => {
-        this.props.history.replace('/rent')
+        this.props.history.go(-2)
       }, false)
     } else {
       Toast.info('服务器开小差了~', 1, null, false)

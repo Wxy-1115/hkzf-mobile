@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, WingBlank, WhiteSpace, Toast } from 'antd-mobile';
-
-import { Link } from 'react-router-dom';
-// 导入
-// import { withFormik, Form, Field, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
+import {  WingBlank, WhiteSpace, Toast } from 'antd-mobile';
 
 import NavHeader from '../../components/NavHeader';
 
@@ -12,12 +7,7 @@ import { API } from '../../utils';
 
 import styles from './index.module.css';
 
-// 验证规则
-// const REG_UNAME = /^[a-zA-Z_\d]{5,8}$/
-// const REG_PWD = /^[a-zA-Z_\d]{5,12}$/
-
-
-class Login extends Component {
+class Registe extends Component {
   state = {
     username: '',
     password: ''
@@ -30,23 +20,21 @@ class Login extends Component {
     // 获取账号和密码
     const { username, password } = this.state
     // 发送请求
-    const res = await API.post('user/login', {
+    const res = await API.post('user/registered', {
       username,
       password
     })
     // console.log(res);
-    const { status, description, body } = res.data
+    const { status, description } = res.data
     if (status === 200) {
-      // 登录成功
-      localStorage.setItem('hkzf_token', body.token)
-      // this.props.history.go(-1)
+      // 注册成功
       if (!this.props.location.state) {
         this.props.history.go(-1)
       } else {
         this.props.history.replace(this.props.location.state.from.pathname)
       }
     } else {
-      // 登录失败
+      // 注册失败
       Toast.info(description, 2, null, false)
     }
   }
@@ -69,12 +57,12 @@ class Login extends Component {
     return (
       <div className={styles.root}>
         {/* 顶部导航 */}
-        <NavHeader className={styles.navHeader}>账号登录</NavHeader>
+        <NavHeader className={styles.navHeader}>账号注册</NavHeader>
         <WhiteSpace size="xl" />
 
-        {/* 登录表单 */}
+        {/* 注册表单 */}
         <WingBlank>
-          <form autocomplete="off">
+          <form autoComplete='off'>
             <div className={styles.formItem}>
               <input
                 className={styles.input}
@@ -83,10 +71,7 @@ class Login extends Component {
                 name="username"
                 placeholder="请输入账号"
               />
-            </div>
-            {/* 长度为5到8位，只能出现数字、字母、下划线 */}
-            {/* <div className={styles.error}>账号为必填项</div> */}
-            <div className={styles.formItem}>
+            </div> <div className={styles.formItem}>
               <input
                 className={styles.input}
                 value={password}
@@ -94,26 +79,19 @@ class Login extends Component {
                 name="password"
                 type="password"
                 placeholder="请输入密码"
-                // autocomplete="new-password"
+                autocomplete="new-password"
               />
             </div>
-            {/* 长度为5到12位，只能出现数字、字母、下划线 */}
-            {/* <div className={styles.error}>账号为必填项</div> */}
             <div className={styles.formSubmit}>
               <button className={styles.submit} type="button" onClick={this.handleSubmit}>
-                登 录
+                注 册
               </button>
             </div>
           </form>
-          <Flex className={styles.backHome}>
-            <Flex.Item>
-              <Link to="/registe">还没有账号，去注册~</Link>
-            </Flex.Item>
-          </Flex>
         </WingBlank>
       </div>
     )
   }
 }
 
-export default Login
+export default Registe

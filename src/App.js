@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 // import Rent from './pages/Rent';
 // import RentAdd from './pages/Rent/Add';
 // import RentSearch from './pages/Rent/Search';
-
+// import Registe from './pages/Registe';
 // 动态加载路由组件
 const CityList = lazy(() => import('./pages/CityList'))
 const Map = lazy(() => import("./pages/Map"))
@@ -23,6 +23,9 @@ const Favorite = lazy(() => import('./pages/Favorite'))
 const Rent = lazy(() => import('./pages/Rent'))
 const RentAdd = lazy(() => import('./pages/Rent/Add'))
 const RentSearch = lazy(() => import('./pages/Rent/Search'))
+const Search = lazy(() => import('./pages/Search'))
+const Registe = lazy(() => import('./pages/Registe'))
+
 
 function App() {
   return (
@@ -35,6 +38,8 @@ function App() {
           <Route path='/map' component={Map}></Route>
           <Route path='/detail/:id' component={Detail}></Route>
           <Route path='/login' component={Login}></Route>
+          <Route path='/search' component={Search}></Route>
+          <Route path='/registe' component={Registe}></Route>
 
           {/* <AuthRoute></AuthRoute> */}
           <AuthRoute path='/favorite' component={Favorite}></AuthRoute>

@@ -27,10 +27,13 @@ class HouesList extends React.Component {
   cityName = ''
   cityId = ''
   async componentDidMount() {
+    if(this.props.location.state){
+      var {id} = this.props.location.state
+    }
     // 获取当前城市信息
-    const {label, value} = await getCurrentCity()
+    const { label, value } = await getCurrentCity()
     this.cityName = label
-    this.cityId = value
+    this.cityId = id ? id : value
     // 渲染房屋列表
     this.searchHouseList()
 
@@ -53,7 +56,7 @@ class HouesList extends React.Component {
       })
       // 关闭加载中
       Toast.hide()
-      if(count !== 0){
+      if (count !== 0) {
         // 弹窗提示查询到的房源数
         Toast.info(`共找到${count}套房源`, 2, null, false)
       }
@@ -95,16 +98,16 @@ class HouesList extends React.Component {
     return (
       <HouseItem
         key={key}
-        style={style} 
+        style={style}
         houseImg={house.houseImg}
         title={house.title}
         desc={house.desc}
         tags={house.tags}
         price={house.price}
-        onclick={()=> {
+        onclick={() => {
           this.props.history.push(`/detail/${house.houseCode}`)
         }}
-        />
+      />
     )
   }
   isRowLoaded = ({ index }) => {
@@ -130,10 +133,10 @@ class HouesList extends React.Component {
       })
     })
   }
-  
+
   renderList = () => {
-    const {count , isLoading} = this.state
-    if (count === 0 && !isLoading){
+    const { count, isLoading } = this.state
+    if (count === 0 && !isLoading) {
       return <NoHouse>没有找到房源，请您换个搜索条件吧</NoHouse>
     }
     return (
